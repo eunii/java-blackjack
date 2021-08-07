@@ -25,8 +25,9 @@ public class GameController {
 
     private void setUp() {
         List<String> playersNames = InputView.getPlayerNames();
-        players = gameService.registPlayer(playersNames);
-
+        playersNames.forEach(
+                playersName -> players.add(new Player(playersName,InputView.getBettingMoney(playersName)))
+        );
     }
 
     private void setFirstTwoCards() {

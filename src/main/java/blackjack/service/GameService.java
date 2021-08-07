@@ -12,14 +12,6 @@ public class GameService {
 
     private static CardDeck cards = new CardDeck();
 
-    public List<Player> registPlayer(List<String> playerNames) {
-        List<Player> players = new ArrayList<>();
-        playerNames.forEach(playerName -> {
-            players.add(new Player(playerName));
-        });
-        return players;
-    }
-
     public static Human setFirstTwoCards(Human human) {
         human.addCard(cards.getAdditionalCard());
         human.addCard(cards.getAdditionalCard());
