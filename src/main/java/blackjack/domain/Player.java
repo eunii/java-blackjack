@@ -1,11 +1,11 @@
 package blackjack.domain;
 
-public class Player extends Human {
+public class Player extends Participant {
+    private final int bettingMoney;
+
     public int getBettingMoney() {
         return bettingMoney;
     }
-
-    private final int bettingMoney;
 
     public Player(String name) {
         super(name);

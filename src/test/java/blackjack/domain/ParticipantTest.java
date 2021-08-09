@@ -2,19 +2,18 @@ package blackjack.domain;
 
 import blackjack.enums.Denomination;
 import blackjack.enums.Suit;
-import blackjack.service.GameService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class HumanTest {
+public class ParticipantTest {
     @Test
     @DisplayName("플레이어는 처음에 카드가 0개인 상태로 시작한다")
     void create() {
         //given
-        Human player = new Human("jason");
-        Human dealer = new Human();
+        Participant player = new Participant("jason");
+        Participant dealer = new Participant("dealer");
         //when
 
         //then
@@ -25,11 +24,11 @@ public class HumanTest {
     @DisplayName("플레이어에게 카드를 추가한다")
     void addCard() {
         //given
-        Human player = new Human("jason");
-        Human dealer = new Human();
+        Participant player = new Participant("jason");
+        Participant dealer = new Participant("dealer");
         //when
-        player.addCard(new Card(Denomination.EIGHT, Suit.CLUB));
-        dealer.addCard(new Card(Denomination.EIGHT, Suit.CLUB));
+        player.hit(new Card(Denomination.EIGHT, Suit.CLUB));
+        dealer.hit(new Card(Denomination.EIGHT, Suit.CLUB));
 
         //then
         assertThat(player.getCards()).hasSize(1);
@@ -39,13 +38,13 @@ public class HumanTest {
     @DisplayName("플레이어가 가진 카드를 반환한다")
     void getCards() {
         //given
-        Human player = new Human("jason");
-        Human dealer = new Human();
+        Participant player = new Participant("jason");
+        Participant dealer = new Participant("dealer");
         //when
-        player.addCard(new Card(Denomination.EIGHT, Suit.CLUB));
-        player.addCard(new Card(Denomination.TWO, Suit.HEART));
-        player.addCard(new Card(Denomination.FOUR, Suit.DIAMOND));
-        dealer.addCard(new Card(Denomination.A, Suit.CLUB));
+        player.hit(new Card(Denomination.EIGHT, Suit.CLUB));
+        player.hit(new Card(Denomination.TWO, Suit.HEART));
+        player.hit(new Card(Denomination.FOUR, Suit.DIAMOND));
+        dealer.hit(new Card(Denomination.A, Suit.CLUB));
 
         //then
         assertThat(player.getCards()).hasSize(3)
