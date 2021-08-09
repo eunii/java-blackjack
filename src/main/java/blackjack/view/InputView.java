@@ -18,7 +18,7 @@ public class InputView {
         return splitByComma(playerNames);
     }
     public static int getBettingMoney(String playerName) {
-        System.out.printf("%d의 배팅 금액은?");
+        System.out.printf("%s의 배팅 금액은?\n", playerName);
         String bettingAmount = scanner.nextLine();
         checkBlank(bettingAmount);
         return Integer.parseInt(bettingAmount);
